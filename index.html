@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
+    <title>福井県 イベント情報</title>
+</head>
+<body>
+ 
+    <!--件数選択ボタン-->
+    <div id="app-form">
+            <!--検索フォーム-->
+            <input type = "text" v-model="keyword" placeholder="キーワード検索">
+            <button v-on:click="decide">検索</button>
+            <p> 
+                <button v-on:click="action(10)">10件</button>
+                <button v-on:click="action(30)">30件</button>
+                <button v-on:click="action(10000)">全件</button>
+            </p>
+            <p>
+                <button v-on:click="inc('back')" v-bind:disabled="noElementsOfBack">前へ</button>
+                <button v-on:click="inc('next')" v-bind:disabled="noElementsOfNext">次へ</button>
+            </p>
+            <table>
+                <tr v-for ="i in list">
+                    <td v-text="i.event_name"></td>
+                </tr>
+            </table>
+        </div>
+    <script type="text/javascript" src="./app.js"></script>
+
+</body>
+</html>
